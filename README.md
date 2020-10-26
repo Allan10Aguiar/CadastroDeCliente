@@ -7,5 +7,58 @@ Olá professor Márcio, segue neste repositório git:
 - Diagrama
 - Script MySQL
 
-OBS.: PARA TESTAR O PROJETO NA SUA MÁQUINA, SERÁ NECESSÁRIO ALTERAR O CAMINHO DO HOST NA CLASSE: "ConnectionFactory.java"
-E EXECUTAR O SCRIPT DO REPOSITÓRIO. NELE CONSTA ALGUNS INSERTS, POIS EU HAVIA CADASTRADO PARA TESTAR!
+OBS.: PARA TESTAR O PROJETO NA SUA MÁQUINA, SERÁ NECESSÁRIO ALTERAR 
+O CAMINHO DO HOST NA CLASSE: "ConnectionFactory.java" E EXECUTAR O SCRIPT 
+DO REPOSITÓRIO. NELE CONSTA ALGUNS INSERTS, POIS EU HAVIA CADASTRADO 
+ALGUMAS VEZES PARA TESTAR!
+
+*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=
+
+........................................................
+ATUALIZAÇÃO: 21/10/2020  :
+.......................................................:
+Primeira Versão do Projeto Final:
+
+##JAVA##
+
+*TELAS: 
+				-CadastroCliente.java; 
+				-frmCadastroUsuario.java; 
+				-frmLogin.java.
+
+*CLASSES:
+				-Pessoa.java;           -> MODEL
+				-Usuario.java;         -> MODEL
+				--------------------------
+				-ClientDAO.java;     ->DAO
+				-UsuarioDAO.java.  -> DAO
+				--------------------------
+				-ConnectionFactory.java. -> CONNECTION FACTORY
+
+*OUTROS:
+				-Arquivos de imagem;
+				-Bibliotecas;
+				-Diagrama de Classes.
+
+##MYSQL##
+
+*TABELAS:
+				-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
+				-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
+
+*DIAGRAMAS:
+				-DER (diagrama de entidade e relacionamento).
+				
+##SOBRE##	
+
+-DESCRIÇÃO:
+
+Este projeto será, em breve, um PDV (Ponto de Vendas) de uma loja de artigos
+de pesca fictícia chamada Golden Fish Store. No presente momento (vide data) o
+sistema é capaz de cadastrar clientes, cadastrar usuários e realizar o login. O sistema
+está sendo desenvolvido em Java no front-end e back-end; e o SGBD MySQL para 
+armazenamento dos dados cadastrados.
+
+-LOGO:
+
+logo_loja.png -> Desenvolvido em parceria com a plataforma on-line Tailor Brands (tailorbrands.com).
