@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 29-Set-2020 às 01:05
+-- Data de Criação: 09-Nov-2020 às 22:39
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de Dados: `bdcadcliente`
 --
+CREATE DATABASE IF NOT EXISTS `bdcadcliente` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bdcadcliente`;
 
 -- --------------------------------------------------------
 
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `tbcliente` (
   `sexo` varchar(250) NOT NULL,
   `cpf` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `tbcliente`
@@ -42,7 +44,30 @@ INSERT INTO `tbcliente` (`id`, `nome`, `sexo`, `cpf`) VALUES
 (1, 'Allan', 'MASCULINO', '12345'),
 (2, 'Eduarda', 'FEMININO', '789044'),
 (3, 'Isabela', 'FEMININO', '33333'),
-(4, 'Enzo', 'MASCULINO', '55555');
+(4, 'Enzo', 'MASCULINO', '55555'),
+(5, 'João', 'MASCULINO', '3456789');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tbusuario`
+--
+
+CREATE TABLE IF NOT EXISTS `tbusuario` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeUsuario` varchar(250) NOT NULL,
+  `senhaUsuario` varchar(250) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `tbusuario`
+--
+
+INSERT INTO `tbusuario` (`idUsuario`, `nomeUsuario`, `senhaUsuario`) VALUES
+(1, 'Allan', '1234'),
+(2, 'Pedro', '54321'),
+(3, 'Allan', '1234');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
