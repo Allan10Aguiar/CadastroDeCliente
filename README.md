@@ -14,6 +14,9 @@ ALGUMAS VEZES PARA TESTAR!
 
 *#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=*#-=
 
+
+![logo_loja_2](https://user-images.githubusercontent.com/64413261/98609816-f68c6180-22cc-11eb-9bd4-48bee6e96f7f.PNG)
+
 ........................................................
 ATUALIZAÇÃO: 21/10/2020  :
 .......................................................:
@@ -38,7 +41,8 @@ Primeira Versão do Projeto Final:
 *OUTROS:
 				-Arquivos de imagem;
 				-Bibliotecas;
-				-Diagrama de Classes.
+				-Diagrama de Classes.				
+				![diagrama_atualizado_10-10](https://user-images.githubusercontent.com/64413261/98609590-58989700-22cc-11eb-95b9-1d753814853f.PNG)
 
 ##MYSQL##
 
@@ -48,6 +52,7 @@ Primeira Versão do Projeto Final:
 
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
+				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)
 				
 ##SOBRE##	
 
