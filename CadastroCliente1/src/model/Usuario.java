@@ -13,6 +13,15 @@ public class Usuario {
     
     private String NomeDeUsuario;
     private String SenhaDoUsuario;
+    private int idUsuario;
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getNomeDeUsuario() {
         return NomeDeUsuario;

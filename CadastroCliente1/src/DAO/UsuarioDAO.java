@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Pessoa;
 import model.Usuario;
 
 /**
@@ -77,6 +80,77 @@ public class UsuarioDAO {
         }
     }
     
+    //Metodo alterar
+    public void alterar(Usuario obj) {
+        try {
+            String sql = "update tbUsuario set nomeUsuario=?, senhaUsuario=? where idUsuario=? ";
+
+            //organizar o cmd sql
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            stmt.setString(1, obj.getNomeDeUsuario());            
+            stmt.setString(2, obj.getSenhaDoUsuario());
+            
+            
+            //Pegando o codigo do cliente para alterar
+            stmt.setDouble(3, obj.getIdUsuario());
+
+            stmt.execute();
+            stmt.close();
+
+        } catch (Exception erro) {
+
+            throw new RuntimeException(erro);
+
+        }
+    }
     
+    //METODO DE EXCLUIR
+    public void excluir(Usuario obj) {
+        try {
+            String sql = "delete from tbUsuario where idUsuario = ? ";
+
+            //organizar o cmd sql
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            //Pegando o codigo do cliente para excluir
+            stmt.setInt(1, obj.getIdUsuario());
+
+            stmt.execute();
+            stmt.close();
+
+        } catch (Exception erro) {
+
+            throw new RuntimeException(erro);
+
+        }
+    }
     
+    //Metodo Listar todos usuários
+    public List listarTodosUsuarios() {
+
+        try {
+
+            List<Usuario> lista = new ArrayList<>();
+            String sql = "select * from tbUsuario";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Usuario obj = new Usuario();
+
+                obj.setIdUsuario(rs.getInt("idUsuario"));
+                obj.setNomeDeUsuario(rs.getString("nomeUsuario"));             
+                obj.setSenhaDoUsuario(rs.getString("senhaUsuario"));
+
+                lista.add(obj);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

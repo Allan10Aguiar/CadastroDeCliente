@@ -5,9 +5,13 @@
  */
 package view;
 
+import DAO.ClienteDAO;
 import DAO.UsuarioDAO;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Pessoa;
 import model.Usuario;
 
 /**
@@ -22,6 +26,26 @@ public class frmCadastroUsuario extends javax.swing.JFrame {
     public frmCadastroUsuario() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/img/cliente.png")).getImage());
+    }
+    
+    public void Listar() {
+        try {
+                UsuarioDAO dao = new UsuarioDAO();
+                List<Usuario> lista = dao.listarTodosUsuarios();
+                DefaultTableModel model = (DefaultTableModel) tabelaUsuario.getModel();
+                model.setNumRows(0);
+
+            for (Usuario obj : lista) {
+                model.addRow(new Object[]{
+                    obj.getIdUsuario(),
+                    obj.getNomeDeUsuario(),
+                    obj.getSenhaDoUsuario()
+                    
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("Aconteceu o erro: " + e);
+        }
     }
 
     /**
@@ -41,9 +65,19 @@ public class frmCadastroUsuario extends javax.swing.JFrame {
         txtNomeUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaUsuario = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Usuário");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1400028250_exit.png"))); // NOI18N
@@ -52,77 +86,94 @@ public class frmCadastroUsuario extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSair);
+        btnSair.setBounds(0, 221, 190, 53);
 
         btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.setPreferredSize(new java.awt.Dimension(190, 50));
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCadastrar);
+        btnCadastrar.setBounds(0, 162, 190, 53);
 
         txtSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(91, 117, 295, 27);
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
         jLabel4.setText("SENHA:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 116, 73, 26);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
         jLabel2.setText("NOME:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(1, 59, 64, 26);
 
         txtNomeUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        getContentPane().add(txtNomeUsuario);
+        txtNomeUsuario.setBounds(91, 60, 295, 27);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
         jLabel1.setText("ID:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(1, 6, 31, 26);
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        getContentPane().add(txtId);
+        txtId.setBounds(91, 6, 295, 27);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(22, 22, 22)
-                .addComponent(txtSenha))
-            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(1, 1, 1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1))
-                    .addGap(30, 30, 30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                        .addComponent(txtNomeUsuario))
-                    .addGap(1, 1, 1)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(25, 25, 25)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(199, Short.MAX_VALUE)))
-        );
+        tabelaUsuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        tabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOME", "SENHA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaUsuarioMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaUsuario);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(392, 6, 414, 268);
+
+        btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluir);
+        btnExcluir.setBounds(196, 221, 190, 53);
+
+        btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        btnAlterar.setText("ALTERAR");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAlterar);
+        btnAlterar.setBounds(196, 162, 190, 53);
 
         pack();
         setLocationRelativeTo(null);
@@ -168,6 +219,57 @@ public class frmCadastroUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        try {
+           Usuario obj = new Usuario();
+
+            obj.setNomeDeUsuario(txtNomeUsuario.getText());
+            obj.setSenhaDoUsuario(txtSenha.getText());
+
+            obj.setIdUsuario(Integer.parseInt(txtId.getText()));
+
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.alterar(obj);
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            
+            txtNomeUsuario.setText(null);            
+            txtId.setText(null);
+            txtSenha.setText(null);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aconteceu o erro: " + e);
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void tabelaUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaUsuarioMouseClicked
+        txtId.setText(tabelaUsuario.getValueAt(tabelaUsuario.getSelectedRow(), 0).toString());
+        txtNomeUsuario.setText(tabelaUsuario.getValueAt(tabelaUsuario.getSelectedRow(), 1).toString());
+        txtSenha.setText(tabelaUsuario.getValueAt(tabelaUsuario.getSelectedRow(), 2).toString());
+    }//GEN-LAST:event_tabelaUsuarioMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            Usuario obj = new Usuario();
+            
+            obj.setIdUsuario(Integer.parseInt(txtId.getText()));
+
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.excluir(obj);
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+            
+            txtNomeUsuario.setText(null);            
+            txtId.setText(null);
+            txtSenha.setText(null);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aconteceu o erro: " + e);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Listar();
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -204,11 +306,15 @@ public class frmCadastroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaUsuario;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JTextField txtSenha;

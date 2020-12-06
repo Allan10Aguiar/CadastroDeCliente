@@ -6,8 +6,10 @@
 package view;
 
 import DAO.ClienteDAO;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Pessoa;
 
 /**
@@ -22,6 +24,27 @@ public class CadastroCliente extends javax.swing.JFrame {
     public CadastroCliente() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/img/ic_addCliente2.png")).getImage());
+    }
+    
+    public void Listar() {
+        try {
+                ClienteDAO dao = new ClienteDAO();
+                List<Pessoa> lista = dao.listarTodosClientes();
+                DefaultTableModel model = (DefaultTableModel) tabelaCliente.getModel();
+                model.setNumRows(0);
+
+            for (Pessoa obj : lista) {
+                model.addRow(new Object[]{
+                    obj.getId(),
+                    obj.getNome(),
+                    obj.getCpf(),
+                    obj.getSexo()
+                    
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("Aconteceu o erro: " + e);
+        }
     }
 
     /**
@@ -44,11 +67,20 @@ public class CadastroCliente extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         cbSexo = new javax.swing.JComboBox<>();
         btnLogout = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaCliente = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
         jLabel1.setText("ID:");
@@ -88,30 +120,81 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        tabelaCliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOME", "CPF", "SEXO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaCliente);
+
+        btnExcluir.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        btnAlterar.setText("ALTERAR");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbSexo, 0, 298, Short.MAX_VALUE)
-                    .addComponent(txtId)
-                    .addComponent(txtNome)
-                    .addComponent(txtCpf))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbSexo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtId)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,10 +210,19 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -186,6 +278,80 @@ public class CadastroCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+        txtId.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 0).toString());
+        txtNome.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 1).toString());
+        txtCpf.setText(tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 2).toString());
+       
+        
+        String sexo = tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 3).toString();
+        
+        if(sexo.equals("MASCULINO")){
+            cbSexo.setSelectedIndex(1);
+        }
+        if(sexo.equals("FEMININO")){
+            cbSexo.setSelectedIndex(2);
+        }       
+     
+    }//GEN-LAST:event_tabelaClienteMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Listar();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            Pessoa obj = new Pessoa();
+            
+            obj.setId(Integer.parseInt(txtId.getText()));
+
+            ClienteDAO dao = new ClienteDAO();
+            dao.excluir(obj);
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+            
+            txtNome.setText(null);            
+            txtId.setText(null);
+            txtCpf.setText(null);
+            cbSexo.setSelectedIndex(0);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aconteceu o erro: " + e);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        try {
+            Pessoa obj = new Pessoa();
+
+            obj.setNome(txtNome.getText());
+            obj.setCpf(txtCpf.getText());
+            
+            if(cbSexo.getSelectedItem().equals("MASCULINO")){
+                
+            obj.setSexo("MASCULINO");
+           
+            }else if(cbSexo.getSelectedItem().equals("FEMININO")){
+                
+            obj.setSexo("FEMININO");
+           
+            }
+
+            obj.setId(Integer.parseInt(txtId.getText()));
+
+            ClienteDAO dao = new ClienteDAO();
+            dao.alterar(obj);
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            
+            txtNome.setText(null);            
+            txtId.setText(null);
+            txtCpf.setText(null);
+            cbSexo.setSelectedIndex(0);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aconteceu o erro: " + e);
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,7 +388,9 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLogout;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -230,6 +398,8 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaCliente;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
