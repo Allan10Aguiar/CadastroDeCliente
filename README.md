@@ -42,14 +42,15 @@ TELAS:
 -CadastroCliente.java
 -frmCadastroUsuario.java
 -frmLogin.java
-A
+
 CLASSES:
-				-Pessoa.java    -> MODEL
-				-Usuario.java   -> MODEL
-				--------------------------
-				-ClientDAO.java   ->DAO
-				-UsuarioDAO.java  -> DAO
-				--------------------------
+
+-Pessoa.java    -> MODEL
+-Usuario.java   -> MODEL
+-------------------------
+-ClientDAO.java   ->DAO
+-UsuarioDAO.java  -> DAO
+-------------------------
 				-ConnectionFactory.java -> CONNECTION FACTORY
 
 *OUTROS:
