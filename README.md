@@ -65,8 +65,11 @@ CLASSES:
 ##MYSQL##
 
 *TABELAS:
-				-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
-				-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
+
+-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
+-----------
+-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
+-------------
 
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
@@ -79,28 +82,46 @@ ATUALIZAÇÃO: 06/12/2020  :
 ##JAVA##
 
 *TELAS: 
-				-frmTelaPrincipal.java; 
-				-frmLogin.java;
-				-internalCadCli.java;
-				-internalCadProd.java;
-				-internalCadUsu.java;
-				-internalCatalogo.java;
-				-intrnalIniciaVenda.java;
-				-internalPDV.java;
-				-internalPagamento.java.
+
+-frmTelaPrincipal.java; 
+-------
+-frmLogin.java;
+-----
+-internalCadCli.java;
+-------------------------
+-internalCadProd.java;
+-----------
+-internalCadUsu.java;
+------
+-internalCatalogo.java;
+-----------
+-intrnalIniciaVenda.java;
+---------
+-internalPDV.java;
+-------
+-internalPagamento.java.
+------
 
 *CLASSES:
-				-Pessoa.java;           -> MODEL
-				-Usuario.java;         -> MODEL
-				-Venda.java;           -> MODEL
-				-ItensVenda.           -> MODEL
-				--------------------------
-				-ClientDAO.java;     ->DAO
-				-UsuarioDAO.java;    -> DAO
-				-VendaDAO.java;      -> DAO
-				-ItensVendaDAO.java. -> DAO
-				--------------------------
-				-ConnectionFactory.java. -> CONNECTION FACTORY
+
+-Pessoa.java;           -> MODEL
+---------
+-Usuario.java;         -> MODEL
+------
+-Venda.java;           -> MODEL
+--------
+-ItensVenda.           -> MODEL
+--------------------------
+-ClientDAO.java;     ->DAO
+------
+-UsuarioDAO.java;    -> DAO
+------------
+-VendaDAO.java;      -> DAO
+--------
+-ItensVendaDAO.java. -> DAO
+--------------------------
+-ConnectionFactory.java. -> CONNECTION FACTORY
+----------
 
 *OUTROS:
 				-Arquivos de imagem;
@@ -109,11 +130,17 @@ ATUALIZAÇÃO: 06/12/2020  :
 ##MYSQL##
 
 *TABELAS:
-				-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
-				-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
-				-tbProduto; -> 5 colunas (idProduto, nomeProduto, descricao, custo, venda).
-				-tbVenda;  -> 5 colunas (idVenda, idClienteFK, data, tempo, formaPagamento).
-				-tbItensVenda; -> colunas (idItemVenda, idVendaFK, idProdutoFK, quantidade, valorUnit, valorItem).
+
+-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
+-------
+-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
+---------
+-tbProduto; -> 5 colunas (idProduto, nomeProduto, descricao, custo, venda).
+------
+-tbVenda;  -> 5 colunas (idVenda, idClienteFK, data, tempo, formaPagamento).
+-----
+-tbItensVenda; -> colunas (idItemVenda, idVendaFK, idProdutoFK, quantidade, valorUnit, valorItem).
+------
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
 				-Diagrama de Classes
