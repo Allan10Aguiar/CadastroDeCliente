@@ -46,12 +46,15 @@ TELAS:
 CLASSES:
 
 -Pessoa.java    -> MODEL
+------
 -Usuario.java   -> MODEL
 -------------------------
 -ClientDAO.java   ->DAO
+------------------
 -UsuarioDAO.java  -> DAO
 -------------------------
-				-ConnectionFactory.java -> CONNECTION FACTORY
+-ConnectionFactory.java -> CONNECTION FACTORY
+-------
 
 *OUTROS:
 				-Arquivos de imagem;
