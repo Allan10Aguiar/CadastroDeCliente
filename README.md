@@ -37,7 +37,7 @@ Primeira Versão do Projeto Final:
 
 ##JAVA##
 
-*TELAS: 
+TELAS: 
 
 -CadastroCliente.java
 -frmCadastroUsuario.java
