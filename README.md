@@ -65,4 +65,50 @@ Primeira Versão do Projeto Final:
 
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
-				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)				
+				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)	
+				
+........................................................
+ATUALIZAÇÃO: 06/12/2020  :
+.......................................................:		
+
+##JAVA##
+
+*TELAS: 
+				-frmTelaPrincipal.java; 
+				-frmLogin.java;
+				-internalCadCli.java;
+				-internalCadProd.java;
+				-internalCadUsu.java;
+				-internalCatalogo.java;
+				-intrnalIniciaVenda.java;
+				-internalPDV.java;
+				-internalPagamento.java.
+
+*CLASSES:
+				-Pessoa.java;           -> MODEL
+				-Usuario.java;         -> MODEL
+				-Venda.java;           -> MODEL
+				-ItensVenda.           -> MODEL
+				--------------------------
+				-ClientDAO.java;     ->DAO
+				-UsuarioDAO.java;    -> DAO
+				-VendaDAO.java;      -> DAO
+				-ItensVendaDAO.java. -> DAO
+				--------------------------
+				-ConnectionFactory.java. -> CONNECTION FACTORY
+
+*OUTROS:
+				-Arquivos de imagem;
+				-Bibliotecas;
+				-Diagrama de Classes.				
+				![diagrama_atualizado_10-10](https://user-images.githubusercontent.com/64413261/98609590-58989700-22cc-11eb-95b9-1d753814853f.PNG)
+
+##MYSQL##
+
+*TABELAS:
+				-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
+				-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
+
+*DIAGRAMAS:
+				-DER (diagrama de entidade e relacionamento).
+				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)	
