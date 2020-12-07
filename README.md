@@ -42,8 +42,8 @@ TELAS:
 -CadastroCliente.java
 -frmCadastroUsuario.java
 -frmLogin.java
-
-*CLASSES:
+A
+CLASSES:
 				-Pessoa.java    -> MODEL
 				-Usuario.java   -> MODEL
 				--------------------------
