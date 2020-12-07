@@ -39,18 +39,18 @@ Primeira Versão do Projeto Final:
 
 *TELAS: 
 
--CadastroCliente.java \n
+-CadastroCliente.java
 -frmCadastroUsuario.java
 -frmLogin.java
 
 *CLASSES:
-				-Pessoa.java;           -> MODEL
-				-Usuario.java;         -> MODEL
+				-Pessoa.java    -> MODEL
+				-Usuario.java   -> MODEL
 				--------------------------
-				-ClientDAO.java;     ->DAO
-				-UsuarioDAO.java.  -> DAO
+				-ClientDAO.java   ->DAO
+				-UsuarioDAO.java  -> DAO
 				--------------------------
-				-ConnectionFactory.java. -> CONNECTION FACTORY
+				-ConnectionFactory.java -> CONNECTION FACTORY
 
 *OUTROS:
 				-Arquivos de imagem;
