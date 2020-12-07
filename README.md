@@ -38,9 +38,10 @@ Primeira Versão do Projeto Final:
 ##JAVA##
 
 *TELAS: 
-				-CadastroCliente.java; 
-				-frmCadastroUsuario.java; 
-				-frmLogin.java.
+
+-CadastroCliente.java; 
+-frmCadastroUsuario.java; 
+-frmLogin.java.
 
 *CLASSES:
 				-Pessoa.java;           -> MODEL
