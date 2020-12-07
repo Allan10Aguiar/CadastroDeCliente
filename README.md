@@ -100,8 +100,6 @@ ATUALIZAÇÃO: 06/12/2020  :
 *OUTROS:
 				-Arquivos de imagem;
 				-Bibliotecas;
-				-Diagrama de Classes.				
-				![diagrama_atualizado_10-10](https://user-images.githubusercontent.com/64413261/98609590-58989700-22cc-11eb-95b9-1d753814853f.PNG)
 
 ##MYSQL##
 
@@ -111,4 +109,6 @@ ATUALIZAÇÃO: 06/12/2020  :
 
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
-				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)	
+				-Diagrama de Classes
+				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)
+				![diagrama_atualizado_06-12](https://user-images.githubusercontent.com/64413261/98609590-58989700-22cc-11eb-95b9-1d753814853f.PNG)
