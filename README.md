@@ -106,9 +106,11 @@ ATUALIZAÇÃO: 06/12/2020  :
 *TABELAS:
 				-tbcliente;  -> 4 colunas (id, nome, cpf, sexo).
 				-tbusuario; -> 3 colunas (idUsuario, nomeUsuario, senhaUsuario).
-
+				-tbProduto; -> 5 colunas (idProduto, nomeProduto, descricao, custo, venda).
+				-tbVenda;  -> 5 colunas (idVenda, idClienteFK, data, tempo, formaPagamento).
+				-tbItensVenda; -> colunas (idItemVenda, idVendaFK, idProdutoFK, quantidade, valorUnit, valorItem).
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
 				-Diagrama de Classes
 				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)
-				![diagrama_atualizado_06-12](https://user-images.githubusercontent.com/64413261/98609590-58989700-22cc-11eb-95b9-1d753814853f.PNG)
+				![diagrama_atualizado_06-12](https://embed.creately.com/HaZkRuoOyOV?type=svg)
