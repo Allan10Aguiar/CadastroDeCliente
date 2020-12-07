@@ -144,5 +144,4 @@ ATUALIZAÇÃO: 06/12/2020  :
 *DIAGRAMAS:
 				-DER (diagrama de entidade e relacionamento).
 				-Diagrama de Classes
-				![DER](https://user-images.githubusercontent.com/64413261/98609522-30109d00-22cc-11eb-8b32-386791c1b30c.PNG)
 				![diagrama_atualizado_06-12](https://embed.creately.com/HaZkRuoOyOV?type=svg)
